@@ -157,6 +157,8 @@ class Group < ActiveRecord::Base
   belongs_to :cohort
   belongs_to :default_group_cover
 
+  has_many :notes, dependent: :destroy
+
   has_many :subgroups,
            -> { where(archived_at: nil).order(:name) },
            class_name: 'Group',

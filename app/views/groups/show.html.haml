@@ -54,6 +54,8 @@
           = t(:start_a_discussion)
       - if can?(:add_members, @group)
         = render 'invite_button', group: @group, discussion: @discussion
+      .btn-group.btn-block.options
+        = render 'new_note_button', note: @note
       - if params[:controller] == 'groups' && params[:action] == 'show'
         - can_edit = can? :edit, @group
         - can_leave = @group.users_include? current_user
@@ -65,6 +67,7 @@
                       data: { toggle: 'dropdown' }  do
               %i.fa.fa-cog
               = t :options
+         
 
             %ul.dropdown-menu.btn-block{role: 'menu'}
               - if can_edit
@@ -106,3 +109,5 @@
 
     = render 'membership_requests', group: @group
     = render 'members', group: @group if can?(:see_members, @group)
+
+    = render 'notes.html.haml'

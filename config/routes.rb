@@ -53,6 +53,10 @@ Loomio::Application.routes.draw do
       end
     end
 
+    # # Added by Tracey on 10-9
+    # resources :notes
+
+
     resources :membership_requests, only: [:create] do
       collection do
         get :my_pending
@@ -306,6 +310,12 @@ Loomio::Application.routes.draw do
 
   resources :comments , only: [:destroy, :edit, :update, :show] do
     post :like, on: :member
+    post :unlike, on: :member
+  end
+
+  # Added by Tracey on 10-10
+  resources :notes , only: [:create, :new, :destroy, :edit, :update, :show] do
+    post :like, on: :member 
     post :unlike, on: :member
   end
 
