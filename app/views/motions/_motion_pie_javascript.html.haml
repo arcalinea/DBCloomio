@@ -1,35 +1,256 @@
+/ :javascript
+/   var ctx = document.getElementById("graph_#{motion.id}").getContext("2d");
+
+/   var votes = #{motion.vote_counts.to_json}
+/   var total_votes = #{motion.total_votes_count}
+/   if (total_votes == 0){
+/     var data = [
+/       {
+/         value: 1,
+/         color: "#cccccc"
+/       }
+/     ]
+/   }else{
+/     var data = [
+/       {
+/         value: votes.yes,
+/         color: "#90D490"
+/       },
+/       {
+/         value: votes.abstain,
+/         color: "#F0BB67"
+/       },
+/       {
+/         value: votes.no,
+/         color:"#D49090"
+/       },
+/       {
+/         value: votes.block,
+/         color: "#dd0000"
+/       }
+/     ]
+/   }
+/   var options = { showTooltips: false, animation: false }
+
+/   var myPieChart = new Chart(ctx).Pie(data, options);
+
+
+%script{src: "http://imakewebthings.github.com/jquery-waypoints/waypoints.min.js", type: "text/javascript"}
+
+%script{charset: "utf-8", src: "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"}
+
+%script{src: "jquery.waypoints.min.js"}
+
 :javascript
-  var ctx = document.getElementById("graph_#{motion.id}").getContext("2d");
+  ;( function() {
+    var data = {
+      pieChart  : [
+        {
+          color       : 'disagree',
+          description : 'Disagree',
+          title       : 'trains',
+          value       : #{motion.yes_votes_count} / #{motion.votes_count}
+        },
+        {
+          color       : 'agree',
+          description : 'Agree',
+          title       : 'flowers',
+          value       : #{motion.no_votes_count} / #{motion.votes_count}
+        },
+        {
+          color       : 'abstain',
+          description : 'Abstain',
+          title       : 'trains',
+          value       : #{motion.abstain_votes_count} / #{motion.votes_count}
+        },
+        {
+          color       : 'block',
+          description : 'Block',
+          title       : 'trains',
+          value       : #{motion.block_votes_count} / #{motion.votes_count}
+        }
+      ]
+    };
 
-  var votes = #{motion.vote_counts.to_json}
-  var total_votes = #{motion.total_votes_count}
-  if (total_votes == 0){
-    var data = [
-      {
-        value: 1,
-        color: "#cccccc"
-      }
-    ]
-  }else{
-    var data = [
-      {
-        value: votes.yes,
-        color: "#90D490"
-      },
-      {
-        value: votes.abstain,
-        color: "#F0BB67"
-      },
-      {
-        value: votes.no,
-        color:"#D49090"
-      },
-      {
-        value: votes.block,
-        color: "#dd0000"
-      }
-    ]
-  }
-  var options = { showTooltips: false, animation: false }
+    var DURATION = 1500;
+    var DELAY    = 500;
 
-  var myPieChart = new Chart(ctx).Pie(data, options);
+    /**
+     * draw the fancy pie chart
+     *
+     * @param {String} elementId elementId
+     * @param {Array}  data      data
+     */
+    function drawPieChart( elementId, data ) {
+      // TODO code duplication check how you can avoid that
+      var containerEl = document.getElementById( elementId ),
+          width       = containerEl.clientWidth,
+          height      = width * .8,
+          radius      = Math.min( width, height ) / 2,
+          container   = d3.select( containerEl ),
+          svg         = container.select( 'svg' )
+                                .attr( 'width', width )
+                                .attr( 'height', height );
+      var pie = svg.append( 'g' )
+                  .attr(
+                    'transform',
+                    'translate(' + width / 2 + ',' + height / 2 + ')'
+                  );
+
+      var twoPi   = 2 * Math.PI;
+      var pieData = d3.layout.pie()
+                      .value( function( d ) { return d.value; } );
+
+      var arc = d3.svg.arc()
+                      .outerRadius( radius - 10)
+                      .innerRadius( 0 );
+
+      var arcOver = d3.svg.arc()
+        .outerRadius(radius);
+
+      var pieChartPieces = pie.datum( data )
+                              .selectAll( 'path' )
+                              .data( pieData )
+                              .enter()
+                              .append( 'path' )
+                              .on('mouseover', function(d) {
+                                var nodeSelection = d3.select(this).style({opacity:'0.8'})
+                              //   .attr( 'stroke-width', '4')
+                              // // .attr('d', 'M5 40 l215 0')
+                              //   .attr( 'stroke', 'black')
+                                .transition()
+                                .duration(500)
+                                .attr("d", arcOver);
+                              } )
+                              .on('mouseout', function(d) {
+                                var nodeSelection = d3.select(this).style({opacity:'1'})
+                                // .attr( 'stroke', null)
+                                // .attr( 'stroke-width', null)
+                                .transition()
+                                .duration(500)
+                                .attr("d", arc);
+                              } )
+                              .attr( 'class', function( d ) {
+                                return 'pieChart__' + d.data.color;
+                              } )
+                              .attr( 'filter', 'url(#pieChartInsetShadow)' )
+                              .attr( 'd', arc )
+                              .each( function() {
+                                this._current = { startAngle: 0, endAngle: 0 };
+                              } )
+                              .transition()
+                              .duration( DURATION )
+                              .attrTween( 'd', function( d ) {
+                                var interpolate = d3.interpolate( this._current, d );
+                                this._current = interpolate( 0 );
+
+                                return function( t ) {
+                                  return arc( interpolate( t ) );
+                                };
+                              } );
+
+      // drawChartCenter();
+
+      // function drawChartCenter() {
+      //   var centerContainer = pie.append( 'g' )
+      //                             .attr( 'class', 'pieChart--center' );
+
+      //   centerContainer.append( 'circle' )
+      //                   .attr( 'class', 'pieChart--center--outerCircle' )
+      //                   .attr( 'r', 0 )
+      //                   .attr( 'filter', 'url(#pieChartDropShadow)' )
+      //                   .transition()
+      //                   .duration( DURATION )
+      //                   .delay( DELAY )
+      //                   .attr( 'r', radius - 100 );
+
+      //   centerContainer.append( 'circle' )
+      //                   .attr( 'id', 'pieChart-clippy' )
+      //                   .attr( 'class', 'pieChart--center--innerCircle' )
+      //                   .attr( 'r', 0 )
+      //                   .transition()
+      //                   .delay( DELAY )
+      //                   .duration( DURATION )
+      //                   .attr( 'r', radius - 100 )
+      //                   .attr( 'fill', '#fff' );
+      // }
+
+      // function drawDetailedInformation ( data, element ) {
+      //   var bBox      = element.getBBox(),
+      //       infoWidth = width * 0.3,
+      //       anchor,
+      //       infoContainer,
+      //       position;
+
+      //   if ( ( bBox.x + bBox.width / 2 ) > 0 ) {
+      //     infoContainer = detailedInfo.append( 'g' )
+      //                                 .attr( 'width', infoWidth )
+      //                                 .attr(
+      //                                   'transform',
+      //                                   'translate(' + ( width - infoWidth ) + ',' + ( bBox.height + bBox.y ) + ')'
+      //                                 );
+      //     anchor   = 'end';
+      //     position = 'right';
+      //   } else {
+      //     infoContainer = detailedInfo.append( 'g' )
+      //                                 .attr( 'width', infoWidth )
+      //                                 .attr(
+      //                                   'transform',
+      //                                   'translate(' + 0 + ',' + ( bBox.height + bBox.y ) + ')'
+      //                                 );
+      //     anchor   = 'start';
+      //     position = 'left';
+      //   }
+
+      //   infoContainer.data( [ data.value * 100 ] )
+      //                 .append( 'text' )
+      //                 .text ( '0 %' )
+      //                 .attr( 'class', 'pieChart--detail--percentage' )
+      //                 .attr( 'x', ( position === 'left' ? 0 : infoWidth ) )
+      //                 .attr( 'y', 75 )
+      //                 .attr( 'text-anchor', anchor )
+      //                 .transition()
+      //                 .duration( DURATION )
+      //                 .tween( 'text', function( d ) {
+      //                   var i = d3.interpolateRound(
+      //                     +this.textContent.replace( /\s%/ig, '' ),
+      //                     d
+      //                   );
+
+      //                   return function( t ) {
+      //                     this.textContent = i( t ) + ' %';
+      //                   };
+      //                 } );
+
+      //   infoContainer.append( 'line' )
+      //                 .attr( 'class', 'pieChart--detail--divider' )
+      //                 .attr( 'x1', 50 )
+      //                 .attr( 'x2', 50 )
+      //                 .attr( 'y1', 50 )
+      //                 .attr( 'y2', 50 )
+      //                 .transition()
+      //                 .duration( DURATION )
+      //                 .attr( 'x2', infoWidth );
+
+      //   infoContainer.data( [ data.description ] )
+      //                 .append( 'foreignObject' )
+      //                 .attr( 'width', infoWidth )
+      //                 .attr( 'height', 100 )
+      //                 .append( 'xhtml:body' )
+      //                 .attr(
+      //                   'class',
+      //                   'pieChart--detail--textContainer ' + 'pieChart--detail__' + position
+      //                 )
+      //                 .html( data.description );
+      // }
+    }
+
+    function render() {
+      drawPieChart(     'pieChart',     data.pieChart );
+    }
+
+    // yeah, let's kick things off!!!
+    render();
+
+  })();
+
