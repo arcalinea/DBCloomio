@@ -1,0 +1,24 @@
+/ .panel.panel-default#members-panel
+/   .panel-heading
+/     %h4
+/       = t :notes
+
+/   .panel-body
+  
+
+/   .panel-footer 
+
+%h2 This is the show notes page
+
+- @group.name
+= render '/groups/title', group: @group
+
+.row.translate-parent{id: "note-#{@note.id}"}
+  .col-md-12
+    .selector-panel
+      = @note.title
+      #discussion-content-container
+        #discussion-context= render 'note_content'
+
+
+/ %h2= t "Create a new note"
