@@ -1,40 +1,3 @@
-  #pieChartSVG {
-    // visibility: hidden;
-  }
-
-.motion-graph {
-
-  #pieChart {
-    height: 190px;
-    width: 190px;
-    float: left;
-  }
-
-  // .foucfix {
-  //   display: none;
-  // }
-
-  .legend {
-    font-size: .85em;
-    float: right;
-    padding-top: 5em;
-    padding-right: 5em;
-    color: $mid-grey;
-
-    .item {
-      text-transform:capitalize;
-      line-height: 1;
-      padding-left: .5em;
-      margin-bottom: .5em;
-    }
-
-    .yes { border-left: 1em solid #90D490 }
-    .no { border-left: 1em solid #D49090   }
-    .abstain { border-left: 1em solid #F0BB67}
-    .block { border-left: 1em solid #dd0000 }
-  }
-}
-
 /**
  * Variable power
  */
@@ -53,10 +16,8 @@ $c-dashedLine       : adjust-lightness( $c-baseColor, 40 );
 
 $c-borderDevider : $c-borderBright;
 
-$c-disagree : #D49090;
-$c-agree : #90D490;
-$c-abstain : #F0BB67;
-$c-block : #dd0000;
+$c-red  : #d79d91;
+$c-blue : #6bb7c7;
 
 // font-stuff
 $f-family : sans-serif;
@@ -67,8 +28,8 @@ $f-baseSize               : 14px;
 $f-sizeHeadline           : 2 * $f-baseSize;
 $f-sizeSubHeadline        : $f-baseSize;
 
-$f-sizePieChartPercentage : 1.5 * $f-baseSize;
-$f-sizePieChartText       : 1 * $f-baseSize;
+$f-sizePieChartPercentage : 3 * $f-baseSize;
+$f-sizePieChartText       : 2 * $f-baseSize;
 
 $f-sizeBubbleLabel : 0.9 * $f-baseSize;
 $f-sizeBubbleValue : 1.5 * $f-baseSize;
@@ -176,13 +137,13 @@ body {
 
 .lineChart--areaLine {
   fill   : none;
-  stroke : $c-agree;
+  stroke : $c-blue;
   stroke-width: 3;
 }
 
 .lineChart--bubble--label {
   fill: none;
-  stroke: $c-agree;
+  stroke: $c-blue;
 
   font-size: $f-sizeBubbleLabel;
   font-style: italic;
@@ -197,23 +158,23 @@ body {
   font-weight: $f-weight;
 }
 .lineChart--circle {
-  fill: $c-agree;
+  fill: $c-blue;
   stroke: #fff;
   stroke-width: 3;
 }
 
 .lineChart--circle__highlighted {
   fill: #fff;
-  stroke: adjust-lightness( $c-agree, -15 );
+  stroke: adjust-lightness( $c-blue, -15 );
 }
 
 .lineChart--gradientBackgroundArea--top {
-  stop-color   : $c-agree;
+  stop-color   : $c-blue;
   stop-opacity : 0.1;
 }
 
 .lineChart--gradientBackgroundArea--bottom {
-  stop-color   : $c-agree;
+  stop-color   : $c-blue;
   stop-opacity : 0.6;
 }
 
@@ -289,20 +250,12 @@ body {
   text-align: right;
 }
 
-.pieChart__agree {
-  fill: $c-agree;
+.pieChart__blue {
+  fill: $c-blue;
 }
 
-.pieChart__disagree {
-  fill: $c-disagree;
-}
-
-.pieChart__abstain {
-  fill: $c-abstain;
-}
-
-.pieChart__block {
-  fill: $c-block;
+.pieChart__red {
+  fill: $c-red;
 }
 
 /**
