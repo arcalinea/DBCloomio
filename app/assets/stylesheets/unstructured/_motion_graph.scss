@@ -1,3 +1,7 @@
+  #pieChartSVG {
+    // visibility: hidden;
+  }
+
 .motion-graph {
 
   #pieChart {
@@ -6,10 +10,15 @@
     float: left;
   }
 
+  // .foucfix {
+  //   display: none;
+  // }
+
   .legend {
     font-size: .85em;
     float: right;
     padding-top: 5em;
+    padding-right: 5em;
     color: $mid-grey;
 
     .item {
