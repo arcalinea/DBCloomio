@@ -114,6 +114,10 @@ class Group < ActiveRecord::Base
   has_many :membership_requests,
            dependent: :destroy
 
+# added by Tracey 10-10
+  has_many :notes, dependent: :destroy
+
+
   has_many :pending_membership_requests,
            -> { where response: nil },
            class_name: 'MembershipRequest',

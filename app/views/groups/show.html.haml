@@ -55,7 +55,7 @@
       - if can?(:add_members, @group)
         = render 'invite_button', group: @group, discussion: @discussion
       .btn-group.btn-block.options
-        = render 'new_note_button', note: @note
+        = render 'new_note_button', group: @group, discussion: @discussion, note: @note
       - if params[:controller] == 'groups' && params[:action] == 'show'
         - can_edit = can? :edit, @group
         - can_leave = @group.users_include? current_user

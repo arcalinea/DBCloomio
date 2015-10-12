@@ -90,6 +90,9 @@ Loomio::Application.routes.draw do
       get :inbox, on: :collection
     end
 
+    ## ADDED BY JULIA 10/11
+    resources :notes
+
     resources :motions,     only: [:show, :index, :create, :update], path: :proposals do
       post :close, on: :member
       post :create_outcome, on: :member
@@ -149,6 +152,8 @@ Loomio::Application.routes.draw do
     get '/d/:id(/:slug)', to: 'redirect#discussion_key'
     get '/g/:id(/:slug)', to: 'redirect#group_key'
     get '/m/:id(/:slug)', to: 'redirect#motion_key'
+    ## Added by Julia 10/11
+    # get '/n/:id(/:slug)', to: 'redirect#note_key'
 
     get '/about' => redirect('https://www.loomio.org/about')
     get '/privacy' => redirect('https://www.loomio.org/privacy')
@@ -225,6 +230,9 @@ Loomio::Application.routes.draw do
     resources :motions,     only: [:index]
     resources :discussions, only: [:index, :new]
     resources :invitations, only: [:new, :destroy]
+    ## added by Julia 10/11, nesting notes under groups.
+    resources :notes, only: [:index, :new, :show, :edit]
+    ##
 
     scope module: :groups do
       resources :memberships, only: [:index, :edit, :destroy, :new, :create] do
@@ -296,6 +304,18 @@ Loomio::Application.routes.draw do
       get :new_proposal
       post :move
       get :print
+      # Added by Tracey 10-10 (needed??)
+      post :add_note
+    end
+  end
+
+  # Added by Tracey & Julia on 10-10
+  resources :notes, path: 'notes', only: [:create, :new, :destroy, :edit, :update, :show] do
+    
+    member do 
+      post :update
+      post :update_description
+      post :add_comment
     end
   end
 
@@ -310,12 +330,6 @@ Loomio::Application.routes.draw do
 
   resources :comments , only: [:destroy, :edit, :update, :show] do
     post :like, on: :member
-    post :unlike, on: :member
-  end
-
-  # Added by Tracey on 10-10
-  resources :notes , only: [:create, :new, :destroy, :edit, :update, :show] do
-    post :like, on: :member 
     post :unlike, on: :member
   end
 
@@ -417,6 +431,8 @@ Loomio::Application.routes.draw do
   get '/discussions/:id', to: 'redirect#discussion_id'
   get '/groups/:id',      to: 'redirect#group_id'
   get '/motions/:id',     to: 'redirect#motion_id'
+  # Added by Julia 10/11
+  get '/notes/:id', to: 'redirect#note_id'
 
   get '/contributions'      => redirect('/crowd')
   get '/contributions/thanks' => redirect('/crowd')

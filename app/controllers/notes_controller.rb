@@ -1,38 +1,43 @@
-class NotesController < BaseController
+class NotesController < GroupBaseController
 	# Not sure if we need this line but comment controller has it:
-  load_and_authorize_resource
+  # load_and_authorize_resource
+  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :load_resource_by_key, except: [:new, :create, :index, :update_version]
 
   def index
   	@notes = Note.all
   end
 
+
   def edit
   	@note = Note.find(params[:id])
   end
 
+
   def show
-  	@note = Note.find(params[:id])
+    @group = @note.group
+  	@note = Note.friendly.find(params[:id])
   end
 
-# Comment update route:
-  # def update
-  #   @comment.uses_markdown = params[:comment].has_key? "uses_markdown"
-  #   if CommentService.update(comment: @comment,
-  #                            params: permitted_params.comment,
-  #                            actor: current_user)
-  #     redirect_to discussion_path(@comment.discussion, anchor: "comment-#{@comment.id}")
-  #   else
-  #     render :edit
-  #   end
-  # end
-
-# Not sure about update:
-  # def update
-  # 	@note.uses_markdown = params[:note].has_key? "uses_markdown"
-  # end
 
   def new
-	@note = Note.new(note_params)
+	 @note = Note.new user: current_user
+   @group = Group.find_by_id params[:group_id]
+
+   @note.group = @group
+
+   render :new
+  end
+
+  def create
+    @note = Note.new(note_params)
+    @note.user = current_user
+
+    if @note.save
+      redirect_to @note
+    else
+      render action: :new
+    end
   end
 
   def destroy
@@ -42,9 +47,10 @@ class NotesController < BaseController
 
 private
   def note_params
-	params.require(:note).permit(:commenter, :body)
+	params.require(:note).permit(:title, :description, :group_id, :user_id)
 	# Don't need line above but maybe something like it
   end
+
 
 end
 

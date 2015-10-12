@@ -1,0 +1,12 @@
+.row
+  .col-md-5
+    #note-form
+      = simple_form_for @note, validate: true do |f|
+        = f.input :title, id: "note-title", input_html: {class: 'js-warn-before-navigating-away'}
+
+        = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
+        = f.input :group_id, as: :hidden, input_html: {value: @note.group_id}
+
+        = f.submit :Create,
+            :class => "btn btn-lg btn-primary", id: "note-submit"
+	    
