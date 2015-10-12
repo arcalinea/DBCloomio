@@ -16,7 +16,7 @@ class NotesController < GroupBaseController
 
   def show
     @group = @note.group
-  	@note = Note.friendly.find(params[:id])
+  	@note = Note.find(params[:id])
   end
 
 
@@ -32,6 +32,8 @@ class NotesController < GroupBaseController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
+    p @note.user
+    p current_user
 
     if @note.save
       redirect_to @note
@@ -46,10 +48,16 @@ class NotesController < GroupBaseController
   end
 
 private
+  def load_resource_by_key
+    @note ||= Note.find(params[:id])
+  end
+
   def note_params
-	params.require(:note).permit(:title, :description, :group_id, :user_id)
+	 params.require(:note).permit(:title, :description, :group_id, :user_id)
 	# Don't need line above but maybe something like it
   end
+
+
 
 
 end

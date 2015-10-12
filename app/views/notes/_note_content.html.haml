@@ -1,0 +1,10 @@
+.row
+  .col-sm-8
+    .description-container
+      .description-body
+        .long-description
+          = render_rich_text(@note.description)
+        - if can?(:edit, @note)
+          = link_to edit_note_path(@note) do
+            %i.fa.fa-pencil
+            = t :edit

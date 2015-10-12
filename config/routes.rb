@@ -53,9 +53,6 @@ Loomio::Application.routes.draw do
       end
     end
 
-    # # Added by Tracey on 10-9
-    # resources :notes
-
 
     resources :membership_requests, only: [:create] do
       collection do
@@ -310,7 +307,8 @@ Loomio::Application.routes.draw do
   end
 
   # Added by Tracey & Julia on 10-10
-  resources :notes, path: 'notes', only: [:create, :new, :destroy, :edit, :update, :show] do
+  # Tracey - added :index to line below b/c path to /notes didn't work
+  resources :notes, path: 'notes', only: [:create, :new, :destroy, :edit, :update, :show, :index] do
     
     member do 
       post :update

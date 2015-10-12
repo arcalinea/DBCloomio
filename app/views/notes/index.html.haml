@@ -1,8 +1,19 @@
-%h2 Notes
-  - @group.notes.each do |note|
-  %p
-    %strong Title:
-    = @note.title
-  %p
-    %strong Description:
-    = @note.description
+%section.main-content
+  - if @notes.any?
+    .notes
+      %ul.selector-list.bordered#group-notes
+        - @notes.each do |note|
+          %li.selector-item
+            = note.title
+
+
+
+
+
+/ - @notes.each do |note|
+/   %p
+/     %strong Title:
+/     = note.title
+/   %p
+/     %strong Description:
+/     = note.description
