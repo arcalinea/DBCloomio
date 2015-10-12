@@ -1,6 +1,7 @@
 class PermittedParams < Struct.new(:params)
 
-  %w[user vote subscription motion membership_request membership
+  # added Note, Julia 10/11
+  %w[user vote note subscription motion membership_request membership
    invitation group_request group discussion discussion_reader comment
    attachment contact_message theme user_deactivation_response network_membership_request].each do |kind|
     define_method(kind) do
@@ -73,6 +74,11 @@ class PermittedParams < Struct.new(:params)
 
   def discussion_attributes
     [:title, :description, :uses_markdown, :group_id, :private, :iframe_src, :starred, :volume]
+  end
+
+  # Julia 10/11 add note attributes
+  def note_attributes
+    [:title, :description, :group_id, :user_id]
   end
 
   def comment_attributes

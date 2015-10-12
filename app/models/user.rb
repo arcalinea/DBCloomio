@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot
 
+  # validates_numericality_of :age, only_integer: true, greater_than: 0, less_than: 100
+
   validates :email, presence: true, uniqueness: true, email: true
   #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -45,6 +47,7 @@ class User < ActiveRecord::Base
 
 
   has_many :contacts, dependent: :destroy
+
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
            class_name: 'Membership',
@@ -79,6 +82,12 @@ class User < ActiveRecord::Base
            class_name: 'Discussion',
            foreign_key: 'author_id',
            dependent: :destroy
+
+# added by Tracey 10-10
+  has_many :notes,
+           through: :groups
+
+  has_many :notes
 
   has_many :motions,
            through: :discussions

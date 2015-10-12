@@ -1,0 +1,4 @@
+- @group.name
+= render '/groups/title', group: @group
+%h2= t "Create a new note"
+= render 'form', submit_text: t('note_form.new.submit'), action: :new

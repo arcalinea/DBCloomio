@@ -34,7 +34,24 @@
     = t(:loading_translation)
 
   .motion-graph.clearfix
-    %canvas.pie{id: "graph_#{motion.id}", height: 150, width: 150}
+    #pieChart.foucfix
+      %svg#pieChartSVG
+        %defs
+          %filter#pieChartInsetShadow
+            %feOffset{:dx => "0", :dy => "0"}/
+            %feGaussianBlur{:result => "offset-blur", :stdDeviation => "3"}/
+            %feComposite{:in => "SourceGraphic", :in2 => "offset-blur", :operator => "out", :result => "inverse"}/
+            %feFlood{"flood-color" => "black", "flood-opacity" => "1", :result => "color"}/
+            %feComposite{:in => "color", :in2 => "inverse", :operator => "in", :result => "shadow"}/
+            %feComposite{:in => "shadow", :in2 => "SourceGraphic", :operator => "over"}/
+          %filter#pieChartDropShadow
+            %feGaussianBlur{:in => "SourceAlpha", :result => "blur", :stdDeviation => "3"}/
+            %feOffset{:dx => "0", :dy => "3", :in => "blur", :result => "offsetBlur"}/
+            %feMerge
+              %feMergeNode/
+              %feMergeNode{:in => "SourceGraphic"}/
+
+    / %canvas.pie{id: "graph_#{motion.id}", height: 150, width: 150}
 
     .legend
       .item.yes

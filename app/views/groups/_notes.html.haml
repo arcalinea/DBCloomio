@@ -1,0 +1,19 @@
+.panel.panel-default#members-panel
+  .panel-heading
+    %h4
+      = t :notes
+      = "(#{ @group.notes.count })"
+
+  .panel-body
+    %ul.created-notes
+      - @group.notes.first(3).each do |note|
+        %li.created-notes
+          %a.selector-link{ href: note_path(note)}
+            .clearfix
+              / .pie.created-notes
+              /   %i.fa.fa-file-text
+              .created-notes-title.word-break=truncate(note.title, :length => 60, :separator => ' '){style='display: inline'}
+  .panel-footer
+    = link_to t(:see_more), group_note_path(:group_id => @group.id)
+
+ 

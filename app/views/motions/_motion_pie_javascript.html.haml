@@ -1,35 +1,163 @@
+/ :javascript
+/   var ctx = document.getElementById("graph_#{motion.id}").getContext("2d");
+
+/   var votes = #{motion.vote_counts.to_json}
+/   var total_votes = #{motion.total_votes_count}
+/   if (total_votes == 0){
+/     var data = [
+/       {
+/         value: 1,
+/         color: "#cccccc"
+/       }
+/     ]
+/   }else{
+/     var data = [
+/       {
+/         value: votes.yes,
+/         color: "#90D490"
+/       },
+/       {
+/         value: votes.abstain,
+/         color: "#F0BB67"
+/       },
+/       {
+/         value: votes.no,
+/         color:"#D49090"
+/       },
+/       {
+/         value: votes.block,
+/         color: "#dd0000"
+/       }
+/     ]
+/   }
+/   var options = { showTooltips: false, animation: false }
+
+/   var myPieChart = new Chart(ctx).Pie(data, options);
+
+
+%script{src: "https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js", type: "text/javascript"}
+
+%script{charset: "utf-8", src: "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"}
+
+
 :javascript
-  var ctx = document.getElementById("graph_#{motion.id}").getContext("2d");
+  ;( function() {
+    var data = {
+      pieChart  : [
+        {
+          color       : 'disagree',
+          description : 'Disagree',
+          value       : #{motion.yes_votes_count} / #{motion.votes_count}
+        },
+        {
+          color       : 'agree',
+          description : 'Agree',
+          value       : #{motion.no_votes_count} / #{motion.votes_count}
+        },
+        {
+          color       : 'abstain',
+          description : 'Abstain',
+          value       : #{motion.abstain_votes_count} / #{motion.votes_count}
+        },
+        {
+          color       : 'block',
+          description : 'Block',
+          value       : #{motion.block_votes_count} / #{motion.votes_count}
+        }
+      ]
+    };
 
-  var votes = #{motion.vote_counts.to_json}
-  var total_votes = #{motion.total_votes_count}
-  if (total_votes == 0){
-    var data = [
-      {
-        value: 1,
-        color: "#cccccc"
-      }
-    ]
-  }else{
-    var data = [
-      {
-        value: votes.yes,
-        color: "#90D490"
-      },
-      {
-        value: votes.abstain,
-        color: "#F0BB67"
-      },
-      {
-        value: votes.no,
-        color:"#D49090"
-      },
-      {
-        value: votes.block,
-        color: "#dd0000"
-      }
-    ]
-  }
-  var options = { showTooltips: false, animation: false }
+    var DURATION = 1500;
+    var DELAY    = 500;
 
-  var myPieChart = new Chart(ctx).Pie(data, options);
+
+    function drawPieChart( elementId, data ) {
+
+      var containerEl = document.getElementById( elementId ),
+          width       = containerEl.clientWidth,
+          height      = width * .8,
+          radius      = Math.min( width, height ) / 2,
+          container   = d3.select( containerEl ),
+          svg         = container.select( 'svg' )
+                                .attr( 'width', width )
+                                .attr( 'height', height );
+      var pie = svg.append( 'g' )
+                  .attr(
+                    'transform',
+                    'translate(' + width / 2 + ',' + height / 2 + ')'
+                  );
+
+      var twoPi   = 2 * Math.PI;
+      var pieData = d3.layout.pie()
+                      .value( function( d ) { return d.value; } );
+
+      var arc = d3.svg.arc()
+                      .outerRadius( radius - 10)
+                      .innerRadius( 0 );
+
+      var arcOver = d3.svg.arc()
+        .outerRadius(radius);
+
+      var pieChartPieces = pie.datum( data )
+                              .selectAll( 'path' )
+                              .data( pieData )
+                              .enter()
+                              .append( 'path' )
+                              .on('mouseover', function(d) {
+                                var nodeSelection = d3.select(this).style({opacity:'0.8'})
+                                .transition()
+                                .duration(500)
+                                .attr("d", arcOver);
+                              } )
+                              .on('mouseout', function(d) {
+                                var nodeSelection = d3.select(this).style({opacity:'1'})
+                                .transition()
+                                .duration(500)
+                                .attr("d", arc);
+                              } )
+                              .attr( 'class', function( d ) {
+                                return 'pieChart__' + d.data.color;
+                              } )
+                              .attr( 'filter', 'url(#pieChartInsetShadow)' )
+                              .attr( 'd', arc )
+                              .each( function() {
+                                this._current = { startAngle: 0, endAngle: 0 };
+                              } )
+                              .transition()
+                              .duration( DURATION )
+                              .attrTween( 'd', function( d ) {
+                                var interpolate = d3.interpolate( this._current, d );
+                                this._current = interpolate( 0 );
+
+                                return function( t ) {
+                                  return arc( interpolate( t ) );
+                                };
+                              } );
+
+    }
+
+    var render =function() {
+      drawPieChart(     'pieChart',     data.pieChart );
+    }
+
+    var renderTrigger = false;
+
+    // var waypoint = new Waypoint({
+    //   element: document.getElementById('pieChart'),
+    //   handler: function() {
+    //     if (renderTrigger === false) {
+    //       element.style('display', 'block');
+    //        render();
+    //        renderTrigger === true;
+    //     }
+    //   },
+    //   offset: 'bottom-in-view'
+    // })
+    $('#pieChartSVG').waypoint(function() {
+      // setTimeout(($('#pieChartSVG').css('visibility', 'visible')), 30000);
+      render();
+    },
+    { offset: 'bottom-in-view'});
+
+})();
+
