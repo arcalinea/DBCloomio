@@ -1,4 +1,4 @@
 //= require lib/Chart
 //= require jquery
 //= require print_discussion
-//= require lib/d3.min
+//= require lib/d3
