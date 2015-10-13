@@ -80,4 +80,5 @@ Loomio::Application.configure do
 
   config.serve_static_files = true
   config.action_mailer.raise_delivery_errors = true
+
 end
