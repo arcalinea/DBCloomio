@@ -198,6 +198,8 @@ GEM
       em-socksify (>= 0.3)
       eventmachine (>= 1.0.3)
       http_parser.rb (>= 0.6.0)
+    em-proxy (0.1.8)
+      eventmachine
     em-socksify (0.3.1)
       eventmachine (>= 1.0.0.beta.4)
     email_spec (1.6.0)
@@ -364,6 +366,11 @@ GEM
     heapy (0.1.0)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
+    heroku-forward (0.4.0)
+      em-proxy (>= 0.1.8)
+      ffi
+      i18n (~> 0.6)
+      spoon (~> 0.0.1)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -608,6 +615,8 @@ GEM
     snorlax (0.1.2)
       cancancan (~> 1.10.1)
       rails (~> 4.1)
+    spoon (0.0.4)
+      ffi
     spring (1.4.0)
     spring-commands-cucumber (1.0.1)
       spring (>= 0.9.1)
@@ -699,6 +708,7 @@ DEPENDENCIES
   gravtastic
   haml-rails (~> 0.9.0)
   heroku-deflater
+  heroku-forward
   http_accept_language
   httparty
   intercom
