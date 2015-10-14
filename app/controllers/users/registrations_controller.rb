@@ -34,8 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     if current_user != nil  
-      account_sid = twilio_account_sid
-      auth_token = twilio_auth_token 
+      account_sid = Rails.application.secrets.twilio_account_sid
+      auth_token = Rails.application.secrets.twilio_auth_token 
      
       @client = Twilio::REST::Client.new account_sid, auth_token 
        
