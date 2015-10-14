@@ -1,3 +1,5 @@
+require 'twilio-ruby' 
+
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'pages'
 
@@ -10,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :load_invitation_from_session, only: :new
 
   include OmniauthAuthenticationHelper
+
   def new
     @user = User.new
     if @invitation
@@ -28,6 +31,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def create
+    super
+    if current_user != nil  
+      account_sid = 'AC956d8ea1d2c87b6f18c2533f4f260394' 
+      auth_token = 'c278a7dbeb79a51e7dd1a70717b5de9d' 
+     
+      @client = Twilio::REST::Client.new account_sid, auth_token 
+       
+      @client.account.messages.create({
+        :from => '+15012420926', 
+        :to => current_user.phone_number, 
+        :body => 'Welcome to DBCLoomio!',  
+      })
+    end
+  end
   private
 
   def redirect_if_robot

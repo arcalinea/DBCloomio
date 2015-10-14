@@ -638,7 +638,7 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.1)
     timecop (0.8.0)
-    twilio-ruby (3.16.1)
+    twilio-ruby (4.1.0)
       builder (>= 2.1.2)
       jwt (~> 1.0)
       multi_json (>= 1.3.0)
@@ -774,7 +774,7 @@ DEPENDENCIES
   stackprof
   thin
   timecop
-  twilio-ruby (~> 3.12)
+  twilio-ruby (~> 4.1.0)
   twitter-text
   uglifier
   underscore-rails
