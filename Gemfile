@@ -112,7 +112,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'email_spec'
   gem 'poltergeist'
-  gem 'webmock'
+  # gem 'webmock'
   gem "codeclimate-test-reporter", require: false
   gem 'rack_session_access'
 end

@@ -1,24 +1,32 @@
-/ .panel.panel-default#members-panel
-/   .panel-heading
-/     %h4
-/       = t :notes
+%h2= @group.name
+%p
+  .row.translate-parent{id: "note-#{@note.id}"}"}
+/ %p
+/   .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+/ - set_title @group.name, "", @group.parent
+/ - cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
+/ - logo_url = image_url use_parent_if_blank(@group, :logo).url(:medium)
 
-/   .panel-body
-  
+/ .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+/   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
+/   - if can? :edit, @group
+/     .upload-button.cover-photo-upload{title: t(:'tooltip.cover_photo_upload')}
+/       = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
+/         = file_field_tag "group[cover_photo]"
+/         .edit-icon
+/           %i.fa.fa-pencil
 
-/   .panel-footer 
+/ %h2 This is the show notes page
 
-%h2 This is the show notes page
+/ - @group.name
+/ = render '/groups/title', group: @group
 
-- @group.name
-= render '/groups/title', group: @group
-
-.row.translate-parent{id: "note-#{@note.id}"}
-  .col-md-12
-    .selector-panel
-      = @note.title
-      #discussion-content-container
-        #discussion-context= render 'note_content'
+/ .row.translate-parent{id: "note-#{@note.id}"}
+/   .col-md-12
+/     .selector-panel
+/       = @note.title
+/       #discussion-content-container
+/         #discussion-context= render 'note_content'
 
 
 / %h2= t "Create a new note"
