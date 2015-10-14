@@ -1,20 +1,4 @@
-class PagesController < ApplicationController
-  require 'rubygems' # not necessary with ruby 1.9 but included for completeness 
-  require 'twilio-ruby' 
-   
-
-  # put your own credentials here 
-  account_sid = 'AC956d8ea1d2c87b6f18c2533f4f260394' 
-  auth_token = 'c278a7dbeb79a51e7dd1a70717b5de9d' 
-   
-  # set up a client to talk to the Twilio REST API 
-  @client = Twilio::REST::Client.new account_sid, auth_token 
-   
-  @client.account.messages.create({
-    :from => '+15012420926', 
-    :to => '858-382-7768', 
-    :body => 'wasup',  
-  })
+class PagesController < ApplicationController   
 
   def home
     @diaspora_group = Group.find_by_id(194)
