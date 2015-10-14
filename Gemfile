@@ -66,7 +66,7 @@ gem 'ahoy_matey'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'heroku-forward'
-gem 'twilio-ruby', '~> 3.12'
+gem 'twilio-ruby', '~>4.1.0'  
 # might need this
 #gem 'activeuuid', '>= 0.5.0'
 

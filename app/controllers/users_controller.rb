@@ -55,4 +55,5 @@ class UsersController < BaseController
 
   def about_deactivation
   end
+
 end
