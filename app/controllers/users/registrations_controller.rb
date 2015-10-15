@@ -1,4 +1,4 @@
-require 'twilio-ruby' 
+require 'twilio-ruby'
 
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'pages'
@@ -33,16 +33,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    if current_user != nil  
+    if current_user != nil
       account_sid = Rails.application.secrets.twilio_account_sid
-      auth_token = Rails.application.secrets.twilio_auth_token 
-     
-      @client = Twilio::REST::Client.new account_sid, auth_token 
-       
+      auth_token = Rails.application.secrets.twilio_auth_token
+
+      @client = Twilio::REST::Client.new account_sid, auth_token
+
       @client.account.messages.create({
-        :from => '+15012420926', 
-        :to => current_user.phone_number, 
-        :body => 'Welcome to DBCLoomio!',  
+        :from => '+15012420926',
+        :to => current_user.phone_number,
+        :body => 'Welcome to DBCLoomio!'
       })
     end
   end

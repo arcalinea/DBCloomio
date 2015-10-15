@@ -660,7 +660,7 @@ GEM
     wasabi (3.5.0)
       httpi (~> 2.0)
       nokogiri (>= 1.4.2)
-    webmock (1.22.0)
+    webmock (1.22.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
