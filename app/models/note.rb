@@ -4,13 +4,16 @@ class Note < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :group
-  # belongs_to :author, foreign_key: 'user_id'
-	# example:
-	# delegate :name, to: :user, prefix: :user
+	
+  delegate :name, to: :user, prefix: :user
 
   def published_at
     created_at
   end
+
+  # def author
+  #   User.find(self.user_id)
+  # end
 
   # def author_name
   #   author.try(:name)

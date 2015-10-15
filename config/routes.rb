@@ -88,7 +88,7 @@ Loomio::Application.routes.draw do
     end
 
     ## ADDED BY JULIA 10/11
-    resources :notes
+    # resources :notes
 
     resources :motions,     only: [:show, :index, :create, :update], path: :proposals do
       post :close, on: :member
@@ -149,9 +149,7 @@ Loomio::Application.routes.draw do
     get '/d/:id(/:slug)', to: 'redirect#discussion_key'
     get '/g/:id(/:slug)', to: 'redirect#group_key'
     get '/m/:id(/:slug)', to: 'redirect#motion_key'
-    ## Added by Julia 10/11
-    # get '/n/:id(/:slug)', to: 'redirect#note_key'
-
+   
     get '/about' => redirect('https://www.loomio.org/about')
     get '/privacy' => redirect('https://www.loomio.org/privacy')
     get '/purpose' => redirect('https://www.loomio.org/purpose')

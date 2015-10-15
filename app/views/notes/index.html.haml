@@ -1,10 +1,20 @@
-%section.main-content
-  - if @notes.any?
-    .notes
-      %ul.selector-list.bordered#group-notes
-        - @notes.each do |note|
-          %li.selector-item
-            = note.title
+.col-md-12
+  .selector-panel
+    %h3 
+      - @group.name
+      = render '/groups/title', group: @group
+      %section.main-content
+        - if @notes.any?
+          .notes
+            %ul.selector-list.bordered#group-notes
+              - @notes.each do |note|
+                %li.selector-item
+                  %a.selector-link{ href: note_path(note)}
+                    = note.created_at.strftime("%b %d, %Y")
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    = note.title
+                    by 
+                    = note.user_name
 
 
 

@@ -14,4 +14,4 @@
               /   %i.fa.fa-file-text
               .created-notes-title.word-break=truncate(note.title, :length => 60, :separator => ' '){style='display: inline'}
   .panel-footer
-    = link_to t(:see_more), group_note_path(:group_id => @group.id)
+    = link_to t(:see_more), group_notes_path(params[:id])

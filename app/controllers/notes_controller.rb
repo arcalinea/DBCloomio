@@ -5,7 +5,13 @@ class NotesController < GroupBaseController
   before_filter :load_resource_by_key, except: [:new, :create, :index, :update_version]
 
   def index
-  	@notes = Note.all
+    @group = Group.find_by_key(params[:group_id])
+  	@notes = Note.where(group_id: @group.id)
+    # @notes = Note.where(group_id: params[:group_id])
+    # p "*" * 90
+    # p params[:group_id]
+    # p "*" * 80
+
   end
 
 
@@ -56,9 +62,6 @@ private
 	 params.require(:note).permit(:title, :description, :group_id, :user_id)
 	# Don't need line above but maybe something like it
   end
-
-
-
 
 end
 
