@@ -11,10 +11,15 @@
           by
           = @note.user_name
       .panel-body
-        %p
+        .col-md-9
+          %strong= @note.created_at.strftime("%b %d, %Y")
+          %br
           = render 'note_content'
+        .col-md-3 
+          #single-note-show-box
+            = render '/groups/notes.html.haml'
+        .col-sm-3
+          =button_to "Back to group", group_path(@group), method: "get"
+        
 
-  .row
-    .col-sm-3
-      =button_to "Back to group", group_path(@group), method: "get"
         
