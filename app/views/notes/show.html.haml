@@ -1,6 +1,3 @@
-%h2= @group.name
-%p
-  .row.translate-parent{id: "note-#{@note.id}"}"}
 / %p
 /   .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
 / - set_title @group.name, "", @group.parent
@@ -16,17 +13,27 @@
 /         .edit-icon
 /           %i.fa.fa-pencil
 
-/ %h2 This is the show notes page
+/ .panel.panel-default#members-panel
+/   .panel-heading
+/     %h4
+/       = t :notes
 
-/ - @group.name
-/ = render '/groups/title', group: @group
+/   .panel-body
+  
 
-/ .row.translate-parent{id: "note-#{@note.id}"}
-/   .col-md-12
-/     .selector-panel
-/       = @note.title
-/       #discussion-content-container
-/         #discussion-context= render 'note_content'
+/   .panel-footer 
+
+%h2 This is the show notes page
+
+- @group.name
+= render '/groups/title', group: @group
+
+.row.translate-parent{id: "note-#{@note.id}"}
+  .col-md-12
+    .selector-panel
+      = @note.title
+      #discussion-content-container
+        #discussion-context= render 'note_content'
 
 
 / %h2= t "Create a new note"
