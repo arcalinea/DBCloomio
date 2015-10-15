@@ -221,7 +221,7 @@ Loomio::Application.routes.draw do
       post :edit_description
       delete :leave_group
       get :members_autocomplete
-      get :previous_proposals, to: :show 
+      get :previous_proposals, to: :show
     end
 
     resources :motions,     only: [:index]
@@ -309,8 +309,8 @@ Loomio::Application.routes.draw do
   # Added by Tracey & Julia on 10-10
   # Tracey - added :index to line below b/c path to /notes didn't work
   resources :notes, path: 'notes', only: [:create, :new, :destroy, :edit, :update, :show, :index] do
-    
-    member do 
+
+    member do
       post :update
       post :update_description
       post :add_comment
@@ -398,6 +398,13 @@ Loomio::Application.routes.draw do
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
 
+  constraints(MainDomainConstraint) do
+    scope controller: 'dashboard' do
+      get :demographics
+      get :user_data, :defaults => { :format => 'json'}
+    end
+  end
+
   # this is a dumb thing
   get '/groups', to: 'dashboard#show'
 
@@ -415,8 +422,8 @@ Loomio::Application.routes.draw do
       get :browser_not_supported
       get :crowdfunding_celebration
 #amrita's route for user demoraphics on index page in footer
-      get :demographics 
-      get :user_data, :defaults => { :format => 'json'}
+      # get :demographics
+      # get :user_data, :defaults => { :format => 'json'}
     end
   end
 

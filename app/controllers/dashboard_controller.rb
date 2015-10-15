@@ -21,4 +21,22 @@ class DashboardController <  GroupBaseController
     # load discussion_readers for discussion, user and store in a hash key: discussion_id
     # preload motion_readers for user, discussions -> current_motions
   end
+
+  #amrita's contribution to the demographics graph page race by gender
+  #Ben refactored it
+  def user_data
+
+    @users = User.all
+
+    demographics_stats = @users.map { |user| { gender: user.gender, race: user.race, count: User.where(gender: user.gender, race: user.race).count } }.uniq!
+
+    respond_to do |format|
+      format.json { render :json => demographics_stats.to_json }
+    end
+
+  end
+
+  def demographics
+  end
+
 end

@@ -1,4 +1,4 @@
-class PagesController < ApplicationController   
+class PagesController < ApplicationController
 
   def home
     @diaspora_group = Group.find_by_id(194)
@@ -87,7 +87,7 @@ class PagesController < ApplicationController
 
   def demographics
   end
-  
+
 
 
 

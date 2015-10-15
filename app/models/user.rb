@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   # validates_numericality_of :age, only_integer: true, greater_than: 0, less_than: 100
 
   validates :email, presence: true, uniqueness: true, email: true
+  validates :race, presence: true
   #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
 
@@ -119,6 +120,8 @@ class User < ActiveRecord::Base
               :ensure_email_api_key
 
   before_create :set_default_avatar_kind
+  after_initialize :set_default_gender
+
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where("deactivated_at IS NOT NULL") }
@@ -235,7 +238,7 @@ class User < ActiveRecord::Base
 
   def self.loomio_helper_bot(password: nil)
     where(email: 'contact@loom.io').first ||
-    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', password: password || SecureRandom.hex)
+    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', gender: 'Other', password: password || SecureRandom.hex)
   end
 
   def self.helper_bots
@@ -361,6 +364,12 @@ class User < ActiveRecord::Base
   def set_default_avatar_kind
     if has_gravatar?
       self.avatar_kind = "gravatar"
+    end
+  end
+
+  def set_default_gender
+    if self.gender.nil?
+      self.gender = "Decline to state"
     end
   end
 

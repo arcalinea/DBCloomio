@@ -1,71 +1,52 @@
-/ :javascript
-/   var ctx = document.getElementById("graph_#{motion.id}").getContext("2d");
-
-/   var votes = #{motion.vote_counts.to_json}
-/   var total_votes = #{motion.total_votes_count}
-/   if (total_votes == 0){
-/     var data = [
-/       {
-/         value: 1,
-/         color: "#cccccc"
-/       }
-/     ]
-/   }else{
-/     var data = [
-/       {
-/         value: votes.yes,
-/         color: "#90D490"
-/       },
-/       {
-/         value: votes.abstain,
-/         color: "#F0BB67"
-/       },
-/       {
-/         value: votes.no,
-/         color:"#D49090"
-/       },
-/       {
-/         value: votes.block,
-/         color: "#dd0000"
-/       }
-/     ]
-/   }
-/   var options = { showTooltips: false, animation: false }
-
-/   var myPieChart = new Chart(ctx).Pie(data, options);
-
-
 %script{src: "https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js", type: "text/javascript"}
 
 %script{charset: "utf-8", src: "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"}
 
 
 :javascript
+
+
   ;( function() {
-    var data = {
-      pieChart  : [
-        {
-          color       : 'agree',
-          description : 'Disagree',
-          value       : #{motion.yes_votes_count} / #{motion.votes_count}
-        },
-        {
-          color       : 'disagree',
-          description : 'Agree',
-          value       : #{motion.no_votes_count} / #{motion.votes_count}
-        },
-        {
-          color       : 'abstain',
-          description : 'Abstain',
-          value       : #{motion.abstain_votes_count} / #{motion.votes_count}
-        },
-        {
-          color       : 'block',
-          description : 'Block',
-          value       : #{motion.block_votes_count} / #{motion.votes_count}
+
+    var votes = #{motion.vote_counts.to_json}
+    var total_votes = #{motion.total_votes_count}
+
+    if (total_votes === 0){
+        var data = {
+          pieChart : [
+            {
+              color      : 'NoVotes',
+              description: 'NoVotes',
+              value      : 1
+            }
+          ]
         }
-      ]
-    };
+    }else{
+        var data = {
+          pieChart  : [
+            {
+              color       : 'agree',
+              description : 'Disagree',
+              value       : #{motion.yes_votes_count} / #{motion.votes_count}
+            },
+            {
+              color       : 'disagree',
+              description : 'Agree',
+              value       : #{motion.no_votes_count} / #{motion.votes_count}
+            },
+            {
+              color       : 'abstain',
+              description : 'Abstain',
+              value       : #{motion.abstain_votes_count} / #{motion.votes_count}
+            },
+            {
+              color       : 'block',
+              description : 'Block',
+              value       : #{motion.block_votes_count} / #{motion.votes_count}
+            }
+          ]
+        };
+      }
 
     var DURATION = 1500;
     var DELAY    = 500;
