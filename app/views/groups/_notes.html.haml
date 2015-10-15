@@ -2,12 +2,10 @@
   .panel-heading
     %h4
       = t :notes
-      - if @group
-        = "(#{ @group.notes.count })"
+      = "(#{ @group.notes.count })"
 
   .panel-body
     %ul.created-notes
-    - if @group
       - @group.notes.first(3).each do |note|
         %li.created-notes
           %a.selector-link{ href: note_path(note)}
@@ -17,5 +15,3 @@
               .created-notes-title.word-break=truncate(note.title, :length => 60, :separator => ' '){style='display: inline'}
   .panel-footer
     = link_to t(:see_more), group_note_path(:group_id => @group.id)
-
- 
