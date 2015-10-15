@@ -45,12 +45,12 @@
     var data = {
       pieChart  : [
         {
-          color       : 'disagree',
+          color       : 'agree',
           description : 'Disagree',
           value       : #{motion.yes_votes_count} / #{motion.votes_count}
         },
         {
-          color       : 'agree',
+          color       : 'disagree',
           description : 'Agree',
           value       : #{motion.no_votes_count} / #{motion.votes_count}
         },
@@ -159,5 +159,5 @@
     },
     { offset: 'bottom-in-view'});
 
-})();
+  })();
 
