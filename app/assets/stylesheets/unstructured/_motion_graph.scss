@@ -8,6 +8,7 @@
     height: 190px;
     width: 190px;
     float: left;
+    padding-left: 2em;
   }
 
   // .foucfix {
@@ -57,6 +58,7 @@ $c-disagree : #D49090;
 $c-agree : #90D490;
 $c-abstain : #F0BB67;
 $c-block : #dd0000;
+$c-noVotes : #cccccc;
 
 // font-stuff
 $f-family : sans-serif;
@@ -303,6 +305,10 @@ body {
 
 .pieChart__block {
   fill: $c-block;
+}
+
+.pieChart__NoVotes {
+  fill: $c-noVotes;
 }
 
 /**

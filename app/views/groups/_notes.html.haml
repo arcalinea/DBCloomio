@@ -2,10 +2,12 @@
   .panel-heading
     %h4
       = t :notes
-      = "(#{ @group.notes.count })"
+      - if @group
+        = "(#{ @group.notes.count })"
 
   .panel-body
     %ul.created-notes
+    - if @group
       - @group.notes.first(3).each do |note|
         %li.created-notes
           %a.selector-link{ href: note_path(note)}

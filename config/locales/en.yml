@@ -51,7 +51,7 @@ en:
       no_invitations_remaining: "No invitations remaining"
     mailer:
       invitation_instructions:
-        subject: 'Someone has invited you to join their Loomio group'
+        subject: 'Someone has invited you to join their Decide.it group'
     registrations:
       sign_up: 'Create account'
     sessions:
@@ -97,7 +97,7 @@ en:
     new_contacts_imported: "That worked! You can type names into the field below and we'll suggest the email address."
     admin_rights_removed: "%{which_user}'s coordinator rights have been removed."
     user_added: "%{user_email_or_name} has been added to the group."
-    new_user_added: "%{user_email_or_name} will be added to the group after they set up a Loomio account."
+    new_user_added: "%{user_email_or_name} will be added to the group after they set up a Decide.it account."
     member_removed: "Member removed."
     membership_approved: "Membership approved."
     membership_request_canceled: "Membership request canceled."
@@ -200,7 +200,7 @@ en:
         other: "%{count} years"
 
   organisation:
-    name: "Loomio"
+    name: "Decide.it"
 
   # Text for screenreaders
   sr:
@@ -215,7 +215,7 @@ en:
     pricing: 'Pricing'
     public_groups: 'Public groups'
     terms: 'Terms'
-    independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
+    independent_install_html: '%{hostname} is running an independent copy of Decide.it: <a href="http://github.com/Decide.it/Decide.it">find out more</a>.'
 
   inbox:
     clear: 'Clear'
@@ -258,15 +258,15 @@ en:
   find_a_group_hint: "To explore public groups"
   search_for_group: "Search for a group..."
   no_groups_found: "No groups found by that name!"
-  no_group_header: "Welcome to Loomio Beta"
+  no_group_header: "Welcome to Decide.it"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
   sign_out: "Sign out"
   sign_in: "Log in"
   honeypot_warning: "Could not create your account. If you're using a screen reader, please make sure the last (hidden) field on the form is blank."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
-  or_sign_in_html: "If you already have a Loomio account, <a href='%{link}' class='%{link_class}'>log in here</a>"
-  or_link_account_html: "If you already have a Loomio account, <a href='%{link}'>link it up</a>"
+  or_sign_in_html: "If you already have a Decide.it account, <a href='%{link}' class='%{link_class}'>log in here</a>"
+  or_link_account_html: "If you already have a Decide.it account, <a href='%{link}'>link it up</a>"
 
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
@@ -304,7 +304,7 @@ en:
       info_title: "What will deactivating your account mean?"
       memberships: "You will no longer be listed as a member in any of the groups you currently belong to."
       group_contributions: "The comments, proposals and discussions you've made in groups will stay, but we'll remove your name from these."
-      emails: "We'll stop sending you Loomio related emails."
+      emails: "We'll stop sending you Decide.it related emails."
 
 
   #
@@ -323,13 +323,13 @@ en:
     group_description_placeholder: "Describe the purpose of your group so your group members know why they are here."
     group_name_error: "Group name is required"
     pricing_html: "In 30 days, we'll ask you to choose a <a href='%{link}' target='_blank'>pricing plan</a>."
-    terms_html: "By starting a group, you agree to Loomio's <a href='%{link}' target='_blank'>terms of service</a>."
+    terms_html: "By starting a group, you agree to Decide.it's <a href='%{link}' target='_blank'>terms of service</a>."
     success:
       header: "You're almost done! Check your email."
       email_delivered: "We've sent an email to %{email}. Please follow the link inside to setup your new group."
       email_not_arrived: "Email has not arrived?"
       please_hold: "Please allow up to five 5 minutes for the email to arrive and be sure to check your spam folder."
-    start_making_decisions: "To start making decisions together on Loomio, set up a group for free:"
+    start_making_decisions: "To start making decisions together on Decide.it, set up a group for free:"
 
   group_form:
     name: "Group name"
@@ -448,7 +448,7 @@ en:
   confirm_leave_hidden_group: "Are you sure you wish to leave %{which_group}? You will also be removed from any subgroups."
   confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
   deactivate_group: "De-activate group"
-  confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org."
+  confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@Decide.it.org."
 
   invited_users: "Invited members"
   members: "Members"
@@ -539,7 +539,7 @@ en:
 
   group_request:
     header: 'Start a group'
-    desc: 'Set up a group to start making decisions together on Loomio:'
+    desc: 'Set up a group to start making decisions together on Decide.it:'
     commercial_use_option: in a company, formal organisation or workplace
     non_commercial_use_option: in a community group or informal network
     please_select_an_option: Please select an option
@@ -548,7 +548,7 @@ en:
       body_html: |
         We've sent you an email with an invite to start your group.
 
-        If you don't see anything in your inbox in a few minutes, email us at <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+        If you don't see anything in your inbox in a few minutes, email us at <a href='mailto:contact@decideit.org'>contact@decideit.org</a>.
 
 
   volume:
@@ -730,20 +730,20 @@ en:
   #
 
   help:
-    coordinating: 'Coordinating your Loomio group'
+    coordinating: 'Coordinating your Decide.it group'
     coordinating_details: |
-       As the coordinator, you’re responsible for setting up your Loomio group and inviting
+       As the coordinator, you’re responsible for setting up your Decide.it group and inviting
        everyone in. As well as learning how to use a new piece of software, your group will
        be learning new processes for collaborating more effectively and making good decisions
        together. Here are some tips for supporting your group to succeed:
-    different_ways: 'Different ways to use Loomio'
+    different_ways: 'Different ways to use Decide.it'
     engaging_html: |
       <h2>Tips for engaging your group</h2>
       <p>People will be excited to jump in and start participating when there’s an engaging
       proposal on the table. A good proposal contains a plan of action for the group, so
       that it’s immediately obvious what it means to agree or disagree. Think about how you
       can identify discussions/decisions the group is currently undertaking in person or by
-      email that would be easier if they were on Loomio.</p>
+      email that would be easier if they were on Decide.it.</p>
       <p>If your group is just starting out, you could start a light-hearted decision, to give
       everyone a chance to play with the tool and see the decision-making process in action.</p>
       <p>Another simple way to encourage people to engage in a discussion is to use the @mention
@@ -765,7 +765,7 @@ en:
     get_in_touch_description_html: "If you have any questions or feedback, <a href='%{link}'>drop us a line</a>."
     getting_started: "Getting started"
     getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
-    getting_the_most: 'Getting the most out of Loomio'
+    getting_the_most: 'Getting the most out of Decide.it'
     have_your_say: "Have your say"
     have_your_say_details_html: |
       <p>When you’re ready to have your say, click one of the four decision buttons.</p>
@@ -782,16 +782,16 @@ en:
       <p>The first question every new member will have is ‘what is this group for?’</p>
       <p>Think about the simplest way you can describe the group: What do you want to
       achieve together? What types of decisions will you be making? Who will be involved?</p>
-      <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
+      <p>It can be a good idea to talk to your group first before you invite them to join Decide.it.</p>
       <p>People will want to know why they’ve been invited, what’s expected of them,
       and why it’s worth their time to learn how to use a new tool.</p>
     join_the_community: "Join the community"
-    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/groups/3'>Click here to go the Loomio Community group</a>."
+    join_the_community_description_html: "Everyone is welcome to join the Decide.it Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.Decide.it.org/groups/3'>Click here to go the Decide.it Community group</a>."
     images_and_text_formatting: "Images and text formatting"
     images_and_text_formatting_html: |
-      <p>Loomio uses ‘Markdown’ for image embedding and text formatting.
+      <p>Decide.it uses ‘Markdown’ for image embedding and text formatting.
       You can switch Markdown on with the small grey icon under the comment box.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
+      <p><a href='https://www.Decide.it.org/discussions/1124'>Click here</a>
       for information on how to use Markdown.</p>
     keep_up_to_date: "Keep up to date"
     keep_up_to_date_html: |
@@ -831,11 +831,11 @@ en:
       needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
     video_id: "52025402"
     video_tutorial: "Video tutorial"
-    video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
-    what_is_loomio: "What is Loomio?"
+    video_tutorial_description: "Check out the video for a quick demonstration of how to use Decide.it."
+    what_is_loomio: "What is Decide.it?"
     what_is_loomio_description_html: |
-      <p> Loomio is a simple, user-friendly online tool for collaborative decision-making.
-          Loomio allows you to host discussions online, invite the right people to participate,
+      <p> Decide.it is a simple, user-friendly online tool for collaborative decision-making.
+          Decide.it allows you to host discussions online, invite the right people to participate,
           come to timely decisions and transform deliberation into real-world action. </p>
 
   hint:
@@ -881,27 +881,27 @@ en:
     tooltip: Learn about our community funding model
     thought_about_contributing: Your chance to contribute
     thought_about_contributing_description: |
-      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
+      Decide.it is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
 
-      Money shouldn’t be a barrier to collaborative decision-making. Loomio is funded by contributions from our community of users, and subscriptions paid by formal organisations using it.
+      Money shouldn’t be a barrier to collaborative decision-making. Decide.it is funded by contributions from our community of users, and subscriptions paid by formal organisations using it.
 
-      Your contribution means we can keep Loomio independent, free of advertising, and freely available to groups doing great stuff in their communities.
+      Your contribution means we can keep Decide.it independent, free of advertising, and freely available to groups doing great stuff in their communities.
 
       Thanks for making this possible!
-    thank_you_title: Thank you for contributing to Loomio!
+    thank_you_title: Thank you for contributing to Decide.it!
     thank_you_body: |
       Your contribution helps us deliver easy collaborative decision-making to the world.
 
       You will receive an email shortly with a receipt for your contribution.
 
-      Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.
+      Everyone is welcome to join the Decide.it Community, where we talk about how to make the most of the tool, and how it can be improved.
 
-      <a href='https://www.loomio.org/groups/3'>Take me to the Loomio Community group &raquo;</a>
+      <a href='https://www.Decide.it.org/groups/3'>Take me to the Decide.it Community group &raquo;</a>
     making_a_donation: Making a donation
     making_a_donation_description: |
-      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
+      Decide.it is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
 
-      Your contribution means we can keep Loomio independent, free of advertising, and freely available to groups doing great stuff in their communities.
+      Your contribution means we can keep Decide.it independent, free of advertising, and freely available to groups doing great stuff in their communities.
 
       Thanks for making this possible!
 
@@ -930,19 +930,19 @@ en:
   link_it_up_instead: "Link it up instead"
   sign_up_via: "Sign up via"
   or_fill_in_this_form: "or fill in this form"
-  already_have_account: "Already have a Loomio account?"
+  already_have_account: "Already have a Decide.it account?"
   confirm_your_details: "Confirm your details"
   link_up_your_account: "Link up your account"
-  log_in_to_your_loomio_account: "Log in to your Loomio account to link it up with %{provider_name}."
-  now_that_your_logged_in: "Now that you've logged in with %{provider_name}, please confirm your details to create a Loomio account."
+  log_in_to_your_loomio_account: "Log in to your Decide.it account to link it up with %{provider_name}."
+  now_that_your_logged_in: "Now that you've logged in with %{provider_name}, please confirm your details to create a Decide.it account."
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
   inactive_html: "This account has been deactivated. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
-  create_an_account_html: 'Create a Loomio Beta account'
+  create_an_account_html: 'Create a Decide.it Beta account'
   log_in: "Log in"
   password_reset:
     email_guidelines_html: |
-      <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
+      <p>Enter the email address for your Decide.it account into the field below and you will be sent a password reset link.</p>
       <p>If you normally sign in via Facebook, Google, Twitter or Persona, enter the email address associated with that account.</p>
     reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
     length_restriction: Passwords must be at least 8 characters long.
@@ -969,20 +969,20 @@ en:
     invitation_already_used: 'This invitation has already been used. Please log in to continue to your group.'
     recipients: "Enter email addresses, separated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
-    subject: "Please join our new Loomio group, %{group}"
+    subject: "Please join our new Decide.it group, %{group}"
     invite_people: "Invite people to your group"
     invite_to_discussion: "Invite people to this discussion"
     invite_to_discussion_info: "Adding people to this discussion will send them an invitation to your group. When they accept, they'll be directed to this discussion."
     select_members: "Add members from %{group_name}"
     body_editable: |
-      Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio.
+      Hey there, come make decisions with us! We're using a collaborative decision-making tool called Decide.it.
     body_editable_discussion: |
       Hey there, come and join the discussion!
     message_body: "Invitation message"
     invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
     invitation_link: "Invitation link"
     discussion_link: "Participate in the discussion:"
-    link_help: "Click this link to join %{group} on Loomio:"
+    link_help: "Click this link to join %{group} on Decide.it:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
     pending_invitations: 'Pending invitations'
     no_pending_invitations: "There are currently no pending invitations."
@@ -1006,18 +1006,18 @@ en:
   #
 
   example_discussion:
-    title: "Example Discussion: Welcome and introduction to Loomio"
+    title: "Example Discussion: Welcome and introduction to Decide.it"
     description: |
-      Welcome to Loomio, a new tool for group decision-making.
+      Welcome to Decide.it, a new tool for group decision-making.
       By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, your group can put their heads together to find the best way forward.
       You can use this example discussion to play around with the features of the tool.
-      To get the ball rolling, Loomio Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath.
+      To get the ball rolling, Decide.it Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath.
 
   example_motion:
     name: "We should have a holiday on the moon!"
     description: |
-      Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
-      Is it a good idea? Loomio Helper Bot wants to know what you think!
+      Decide.it Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
+      Is it a good idea? Decide.it Helper Bot wants to know what you think!
       If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
       You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
   #
@@ -1026,7 +1026,7 @@ en:
 
   contact_page:
     contact_us: Contact us
-    faq_prompt_html: "Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions."
+    faq_prompt_html: "Got a question for the Decide.it team? Before contacting us, you might be able to find the answer in our frequently asked questions."
     contact_information: "If you don't find what you're looking for, you can find our contact information at the bottom of the page."
     contact_form: Contact form
     labels:
@@ -1095,10 +1095,10 @@ en:
   group_setup:
     set_up_your_group: Set up your group
     desc_header: "You're almost there!"
-    desc_html: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>"
+    desc_html: "As the group coordinator, you’re responsible for setting up and managing your Decide.it group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>"
     submit: "Take me to my group!"
     payment_model:
-      header: Loomio is for everyone!
+      header: Decide.it is for everyone!
       info: We have a payment model that suits any group, even those with no money :)
       link: Find out more
 
@@ -1154,50 +1154,50 @@ en:
     by_who: "by %{person}"
     reply_to_this_discussion: Reply to this discussion
     to_join_discussion:
-      subject: "%{who} wants you to join a discussion on Loomio"
+      subject: "%{who} wants you to join a discussion on Decide.it"
       content: "You've been invited to participate in the discussion: %{discussion}"
       message_intro: "%{who} says:"
       link: "Join the discussion"
     to_join_group:
-      subject: "%{member} has invited you to join %{group_name} on Loomio"
+      subject: "%{member} has invited you to join %{group_name} on Decide.it"
     to_start_group:
-      subject: "Set up your new Loomio group: %{group_name}"
+      subject: "Set up your new Decide.it group: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} has added you to %{which_group}"
-      content: "%{who} has added you to %{which_group} on Loomio. Click here to go to the group:"
+      content: "%{who} has added you to %{which_group} on Decide.it. Click here to go to the group:"
     unsubscribe: "Unsubscribe or change your email preferences:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
-    view_comment: "Click here to view the comment on Loomio"
+    view_comment: "Click here to view the comment on Decide.it"
     view_discussion: "Click here to view this discussion"
-    view_group: "Click here to view the group on Loomio"
-    view_proposal: "View this proposal on Loomio"
+    view_group: "Click here to view the group on Decide.it"
+    view_proposal: "View this proposal on Decide.it"
     create_discussion:
       intro: "%{who} started a discussion in %{which_group}:"
     create_proposal:
-      intro: "A new proposal was created in a Loomio group that you belong to."
+      intro: "A new proposal was created in a Decide.it group that you belong to."
       closes_in: "Closes in"
       subject: "New proposal: %{which}"
     daily_activity:
-      heading: "Your Loomio Activity"
-      intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
-      subject: "Loomio - Summary of the last 24 hours"
+      heading: "Your Decide.it Activity"
+      intro: "Showing you what’s been happening in your Decide.it groups in the last 24 hours"
+      subject: "Decide.it - Summary of the last 24 hours"
     missed_yesterday:
-      subject: "Yesterday on Loomio"
+      subject: "Yesterday on Decide.it"
       headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
       click_here_to_mark_all_as_read_html: |
-        Here's what happened on Loomio yesterday.
-        Once you've read it, click <a href="%{link}">mark as read</a> to remove it from your Loomio Inbox.
+        Here's what happened on Decide.it yesterday.
+        Once you've read it, click <a href="%{link}">mark as read</a> to remove it from your Decide.it Inbox.
       marked_as_read_success: "Everything from the email has been marked as read"
 
     comment_replied_to:
       context: "%{author_name} replied to your comment in the discussion \"%{discussion_title}\""
-      subject: "%{who} replied to your comment in the %{which} group on Loomio"
+      subject: "%{who} replied to your comment in the %{which} group on Decide.it"
     group_email:
       intro: "%{who} made an announcement to %{group}:"
     group_membership_approved:
-      intro: "Your request for access to the group '%{group_name}' on Loomio has been approved."
+      intro: "Your request for access to the group '%{group_name}' on Decide.it has been approved."
       subject: "Membership approved"
     invitation:
       hi: "Hi %{name},"
@@ -1205,14 +1205,14 @@ en:
       closing_message: "If you’ve got any questions or if there’s anything at all we can do to help you get up and running, we’d love to hear from you - just reply to this email."
       thanks: |
         Thanks!
-        The Loomio Team
+        The Decide.it Team
     membership_request:
-      intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
+      intro: "%{name} (%{email}) has requested access to one of your Decide.it groups."
       subject: "%{who} has requested to join %{which_group}"
       view_group: "You can approve or decline the request here"
     mentioned:
       context: "%{author_name} mentioned you while discussing \"%{discussion_title}\""
-      subject: "%{who} mentioned you in the %{which} group on Loomio"
+      subject: "%{who} mentioned you in the %{which} group on Decide.it"
     new_motion_created:
       subject: "Proposal: %{proposal_title}"
       context: "%{author} created a proposal in %{group_full_name}:"
@@ -1256,14 +1256,14 @@ en:
   #
 
   meta_tags:
-    default_title: "Loomio | Collaborative Decision-Making"
-    default_description: Loomio is an easy to use online tool for group decision-making. It allows dispersed groups to reach decisions quickly and take constructive action.
+    default_title: "Decide.it | Collaborative Decision-Making"
+    default_description: Decide.it is an easy to use online tool for group decision-making. It allows dispersed groups to reach decisions quickly and take constructive action.
 
   #
   # COMMON WORDS
   #
 
-  about_loomio: "About Loomio"
+  about_loomio: "About Decide.it"
   ago: "%{quantity_of_time} ago"
   approve: "Approve"
   attachments: "Attachments:"
@@ -1271,7 +1271,7 @@ en:
   back: "Back"
   cancel: "Cancel"
   change: "Change"
-  change_language: "Click here to use Loomio in %{language}"
+  change_language: "Click here to use Decide.it in %{language}"
   changing: "Changing"
   click_here: "Click here"
   close: "Close"
@@ -1306,7 +1306,7 @@ en:
   pricing: 'Pricing'
   prev: "Prev"
   more: "More..."
-  translate: "Help translate Loomio!"
+  translate: "Help translate Decide.it!"
   translate_field: "See translation"
   loading_translation: "Loading translation..."
   translate_this_string: "Translate to %{language}"
@@ -1324,7 +1324,7 @@ en:
   start_a_group: "Start a group"
   starting: "Starting"
   subject: "Subject"
-  tos_html: "By logging in, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
+  tos_html: "By logging in, you agree to Decide.it's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
   unlike: "Unlike"
   time_until_close: "%{quantity_of_time} until close"
@@ -1470,4 +1470,4 @@ en:
       motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
       motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
       new_motion: "*%{author}* started a new proposal in *%{name}*"
-      view_it_on_loomio: "View it on Loomio"
+      view_it_on_loomio: "View it on Decide.it"

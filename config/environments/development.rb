@@ -42,4 +42,6 @@ Loomio::Application.configure do
   }
 
   config.action_controller.action_on_unpermitted_parameters = :raise
+
+  config.middleware.use Rack::TwilioWebhookAuthentication, Rails.application.secrets.twilio_auth_token, '/voice'
 end

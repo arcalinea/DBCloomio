@@ -1,5 +1,6 @@
 ;(function() {
 
+
     var width = 960,
         height = 500,
         radius = Math.min(width, height) / 2;
@@ -30,18 +31,45 @@
           .reverse();
           console.log(racesByGender)
 
-      var label = d3.select("form").selectAll("label")
+      var label = d3.select("form.btn-group").selectAll("label")
           .data(racesByGender)
         .enter().append("label");
 
-      label.append("input")
-          .attr("type", "radio")
-          .attr("name", "gender")
-          .attr("value", function(d) { return d.key; })
-          .on("change", change)
-        .filter(function(d, i) { return !i; })
-          .each(change)
-          .property("checked", true);
+      // label.append("input")
+      //     .attr("type", "radio")
+      //     .attr("name", "gender")
+      //     .attr("value", function(d) { return d.key; })
+      //     .on("change", change)
+      //   .filter(function(d, i) { return !i; })
+      //     .each(change)
+      //     .property("checked", true);
+
+      // $('label').addClass("btn btn-primary active");
+
+// <div class="btn-group" data-toggle="buttons">
+//   <label class="btn btn-primary active">
+//     <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+//   </label>
+//   <label class="btn btn-primary">
+//     <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+//   </label>
+//   <label class="btn btn-primary">
+//     <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+//   </label>
+// </div>
+    $('label').addClass("btn btn-primary");
+
+    label.append("input")
+        .attr("type", "radio")
+        .attr("name", "gender")
+        .attr("autocomplete", "off")
+        .style("display", "none")
+        .attr("id", function(d) { return d.key; })
+        .on("change", change)
+      .filter(function(d, i) { return !i; })
+        .each(change)
+        .property("class", "active");
+
 
       label.append("span")
           .text(function(d) { return d.key; });

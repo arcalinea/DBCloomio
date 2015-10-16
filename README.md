@@ -1,4 +1,4 @@
-<h1><a href="https://www.loomio.org"> <img src="app/assets/images/logo-orange.png" alt="Loomio"/></a> </h1>
+<h1><a href="https://www.loomio.org"> <img src="app/assets/images/decideit_logo.png" alt="Loomio"/></a> </h1>
 
 [![Build Status](https://img.shields.io/travis/loomio/loomio.svg)](https://travis-ci.org/loomio/loomio)
 [![Code Climate](https://img.shields.io/codeclimate/github/loomio/loomio.svg)](https://codeclimate.com/github/loomio/loomio)
