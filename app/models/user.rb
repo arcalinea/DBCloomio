@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   # validates_numericality_of :age, only_integer: true, greater_than: 0, less_than: 100
 
   validates :email, presence: true, uniqueness: true, email: true
-  validates :race, presence: true
+  # validates :race, presence: true
   #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
 
@@ -238,7 +238,7 @@ class User < ActiveRecord::Base
 
   def self.loomio_helper_bot(password: nil)
     where(email: 'contact@loom.io').first ||
-    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', gender: 'Other', password: password || SecureRandom.hex)
+    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', race: 'Robot', gender: 'Other', password: password || SecureRandom.hex)
   end
 
   def self.helper_bots

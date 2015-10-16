@@ -210,9 +210,9 @@ module ApplicationHelper
       ENV['APP_LOGO_PATH']
     else
       if hide_beta_logo?
-        image_url("dbc_logo.png")
+        image_url("decideit_logo.png")
       else
-        image_url("dbc_logo.png")
+        image_url("decideit_logo.png")
       end
     end
   end
